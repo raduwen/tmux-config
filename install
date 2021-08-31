@@ -1,0 +1,17 @@
+#!/bin/sh
+
+TMUX_CONFIG_DIR=$(cd $(dirname $0); pwd)
+
+if [ -d $HOME/.config/tmux ] && [ ! -h $HOME/.config/tmux ]; then
+  echo "backup to $HOME/.config/tmux.bak"
+  mv $HOME/.config/tmux $HOME/.config/tmux.bak
+fi
+
+rm -rf $HOME/.config/tmux
+ln -sf "$TMUX_CONFIG_DIR"/.config/tmux $HOME/.config/tmux
+
+mkdir -p $HOME/.local/bin
+
+ln -sf $TMUX_CONFIG_DIR/bin/loadaverage $HOME/.local/bin/loadaverage
+ln -sf $TMUX_CONFIG_DIR/bin/used_mem $HOME/.local/bin/used_mem
+ln -sf $TMUX_CONFIG_DIR/bin/tmux-page-border $HOME/.local/bin/tmux-pane-border
