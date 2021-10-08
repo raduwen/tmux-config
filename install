@@ -15,3 +15,7 @@ mkdir -p $HOME/.local/bin
 ln -sf $TMUX_CONFIG_DIR/bin/loadaverage $HOME/.local/bin/loadaverage
 ln -sf $TMUX_CONFIG_DIR/bin/used_mem $HOME/.local/bin/used_mem
 ln -sf $TMUX_CONFIG_DIR/bin/tmux-pane-border $HOME/.local/bin/tmux-pane-border
+
+if [ ! -d $HOME/.local/src/github.com/tmux-plugins/tpm ]; then
+  git clone https://github.com/tmux-plugins/tpm $HOME/.local/src/github.com/tmux-plugins/tpm
+fi
